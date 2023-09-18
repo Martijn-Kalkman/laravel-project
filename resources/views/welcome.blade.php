@@ -10,9 +10,9 @@
     @include('partials.navbar') <!-- Include the navbar.blade.php file -->
 </head>
 <body class="bg-[#0E0C0D]">
-    <p class="text-white">
-w
+<div class="container bg-white mx-auto">
+s
 
-    </p>
+</div>
 </body>
 </html>
