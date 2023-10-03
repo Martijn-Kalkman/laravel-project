@@ -29,6 +29,6 @@
 <div class="bg-home h-[93vh]">s
 <div class="container">
 
-    
+
 </div>
 </div>
