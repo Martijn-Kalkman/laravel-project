@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-home{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url('../../public/images/homewp.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	/* Background-image: rgba(0, 0, 0, 0.8); */
+
+
+}
+/* src="{{ asset('/images/luffy.png') }}" */

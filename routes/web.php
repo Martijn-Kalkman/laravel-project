@@ -20,3 +20,6 @@ Route::get('/', function () {
 });
 Route::get('/about-us', [AboutusController::class, 'index']);
 Route::get('/animelist', [AnimelistController::class, 'index']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

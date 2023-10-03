@@ -1,6 +1,6 @@
 @include('app')
     
-<div class="lg:container mx-auto lg:pt-6">
+{{-- <div class="lg:container mx-auto lg:pt-6">
     <div class="bg-[#31354bc5] h-96 lg:rounded-xl lg:w-9/12 mx-auto p-4">
         <h1 class="text-center text-white text-2xl font-semi-bold"> The best anime track website ever! </h1>
         <p class="p-5 w-72 text-[#c7d5ed] text-center text-l mx-auto">Start tracking your anime progress!</p>
@@ -25,4 +25,10 @@
                 </div>
         </div>
     </div>
+</div> --}}
+<div class="bg-home h-[93vh]">s
+<div class="container">
+
+    
+</div>
 </div>
