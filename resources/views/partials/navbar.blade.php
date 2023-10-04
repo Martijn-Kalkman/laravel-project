@@ -41,8 +41,8 @@
   {{ csrf_field() }}
 </form>
 @else
-  <button type="button" class=" px-4 text-sky-200 border-2 rounded-lg border-sky-200 shadow-[0_0_2px_#fff,inset_0_0_2px_#fff,0_0_5px_#08f,0_0_15px_#08f,0_0_30px_#08f] hover:bg-sky-600 hover:text-white
-  -600" onclick="logout()">Login</button>
+  <a href="{{ route('login') }}" class=" py-2 px-4 text-sky-200 border-2 rounded-lg border-sky-200 shadow-[0_0_2px_#fff,inset_0_0_2px_#fff,0_0_5px_#08f,0_0_15px_#08f,0_0_30px_#08f] hover:bg-sky-600 hover:text-white
+  -600" onclick="logout()">Login</a>
 @endif
           
           {{-- </a> --}}

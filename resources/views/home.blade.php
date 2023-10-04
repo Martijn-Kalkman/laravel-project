@@ -1,4 +1,5 @@
 @include('app')
+
     
 {{-- <div class="lg:container mx-auto lg:pt-6">
     <div class="bg-[#31354bc5] h-96 lg:rounded-xl lg:w-9/12 mx-auto p-4">

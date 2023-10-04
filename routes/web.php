@@ -19,7 +19,9 @@ Route::get('/', function () {
     return view('home');
 });
 Route::get('/about-us', [AboutusController::class, 'index']);
-Route::get('/animelist', [AnimelistController::class, 'index']);
+Route::get('/animelist', [AnimelistController::class, 'index'])->middleware('auth');
+Route::post('/update-name', [AnimelistController::class, 'updateName'])->name('update.name');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
