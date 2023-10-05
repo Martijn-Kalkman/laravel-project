@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-
 
 class AnimelistController extends controller
 {
@@ -12,13 +10,4 @@ class AnimelistController extends controller
     {
         return view('animelist');
     }
-
-    public function updateName(Request $request)
-{
-    $user = Auth::user();
-    $user->name = $request->input('name');
-    $user->save();
-
-    return view('animelist');
-}
 }

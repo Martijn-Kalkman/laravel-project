@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-      public function index()
+      public function create()
     {
-        return view('home');
+        return view('profile.create');
     }
 }
