@@ -4,7 +4,8 @@
   @vite('resources/css/app.css')
 </head> --}}
 
-<nav class="bg-[#383b42] h-[7vh]">
+
+<nav class="bg-[#383b42] h-[4rem]">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3">
       <a href="{{ url('/') }}" class="flex items-center">
           {{-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" /> --}}
@@ -48,7 +49,7 @@
           @if(Auth::check() && Auth::user()->role == '1')
           
           <li>
-            <a href="{{ url('/admin-pannel') }}"" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-sky-200 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Admin pannel</a>
+            <a href="{{ url('/admin-pannel') }}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-sky-200 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Admin pannel</a>
           </li>
           {{-- Content to display if the condition is not met --}}
       @endif
