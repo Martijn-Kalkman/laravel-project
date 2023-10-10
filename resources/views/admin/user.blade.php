@@ -1,2 +1,7 @@
 @include('app')
-@include('partials/sidenav')
+
+<div class=" container bg-red-600  w-10/12 mx-auto ">
+    Users
+    
+    
+    </div>
