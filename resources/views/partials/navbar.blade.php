@@ -48,7 +48,7 @@
           
           @endif
 
-          @if(Auth::check() && Auth::user()->role == '1')
+          @if(Auth::check() && Auth::user()->role == '1') 
           
           <li>
             <a href="{{ url('/admin-pannel') }}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-sky-200 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Admin pannel</a>
@@ -64,7 +64,7 @@
 @if (request()->is('users') || request()->is('admin-pannel'))
 <div class="flex flex-row">
 <nav class="bg-[#383B42] w-2/12 h-screen mt-[-4em]">
-  <ul class="mt-[4em]">
+  <ul class="mt-[4em]"> 
 
     <a href="{{ url('/admin-pannel') }}">
       <li class="bg-[#bae5fd4d] hover:cursor-pointer text-white mb-1 rounded hover:bg-[#5998b9] border-b-1 border-black py-2 px-4">Admin pannel  
@@ -83,4 +83,5 @@
       <p class="mx-2 text-center my-5">Welkom {{ Auth::user()->name }}
   </p>    
   </div>
-</nav>@endif
+</nav>
+@endif

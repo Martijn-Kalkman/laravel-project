@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,15 +14,7 @@ class DashboardController extends controller
     }
     public function userIndex()
     {
-        return view('admin/user');
+        $users = User::all();
+        return view('admin/user', ['users' => $users]);
     }
-
-//     public function updateName(Request $request)
-// {
-//     $user = Auth::user();
-//     $user->name = $request->input('name');
-//     $user->save();
-
-//     return view('admin/admin-dashboard');
-// }
 }
