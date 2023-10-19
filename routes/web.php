@@ -39,8 +39,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 // Admin only
-// Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function() {
     Route::get('/admin-pannel', [DashboardController::class, 'index'])->middleware(['auth', 'isAdmin']);
-    Route::get('/users', [DashboardController::class, 'userIndex'])->middleware(['auth', 'isAdmin']);
+    Route::get('/users', [DashboardController::class, 'userIndex'])->name('user.index')->middleware(['auth', 'isAdmin']);
+    Route::delete('/users/{user}', [DashboardController::class, 'userDelete'])->name('userDelete');
+
+    
+
 
 // });
