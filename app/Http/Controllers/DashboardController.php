@@ -18,9 +18,9 @@ class DashboardController extends controller
         return view('admin/user', ['users' => $users]);
     }   
     public function userDelete(User $user)
-{
+    {
     $name = $user->name;
     $user->delete();
-    return redirect()->route('user.index')->with('success', 'Account ' . $name . 'is succesvol Verwijderd uit het systeem');
-}
+    return redirect()->route('user.index')->with('success', 'Account ' . $name . ' is succesvol Verwijderd uit het systeem');
+    }
 }
