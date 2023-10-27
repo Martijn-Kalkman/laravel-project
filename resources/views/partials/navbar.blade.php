@@ -45,6 +45,9 @@
           <li>
           <a href="{{ route('login') }}" class=" py-2 px-4 text-sky-200 border-2 rounded-lg border-sky-200 shadow-[0_0_2px_#fff,inset_0_0_2px_#fff,0_0_5px_#08f,0_0_15px_#08f,0_0_30px_#08f] hover:bg-sky-600 hover:text-white -600" onclick="logout()">Login</a>
           </li>
+          <li>
+            <a href="{{ url('/register') }}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-sky-200 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">register</a>
+          </li>
           
           @endif
 

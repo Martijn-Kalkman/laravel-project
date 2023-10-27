@@ -19,8 +19,6 @@ class AdminMiddleware
         if(Auth::check()) {
             if(Auth::user()->role == '1') {
 
-                // return redirect('/profile');
-
             } else{
                 return redirect('/home');
             }

@@ -1,5 +1,6 @@
 @include('app')
 
+
 <div class="flex-grow">
     <div class="flex flex-col">
         @if (session('success'))
@@ -11,14 +12,20 @@
 
         <div class="container mx-auto w-screen h-96">
             <div class="container mx-auto">
-                <h1 class="font-bold text-2xl pt-8 pb-2">Users List</h1>
+                <h1 class="font-bold text-2xl pt-8 pb-2 text-white">Users List</h1>
 
-                <div class="overflow-x-auto max-h-[40rem]">
+                <div class="overflow-x-auto max-h-[40rem] text-white">
                     <table class="w-full text-sm text-left">
-                        <!-- ... Table headers ... -->
+                        <thead class=" sticky top-0 z-50 mt-[30px]">
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </thead>
+
                         <tbody>
                             @foreach ($users as $user)
-                                <tr class="border-b text-[1.2em] dark:border-gray-700">
+                                <tr class="border-b text-[1.2em] ">
                                     <td class="px-6 py-4">
                                         {{ $user->id }}
                                     </td>
@@ -50,7 +57,7 @@
                                             @csrf
                                             @method('PUT')
                                             <label class="text-[1.2em]" for="name">Verander naam naar:</label>
-                                            <input class="text-[1.2em] border-solid border-2 border-black"
+                                            <input class="text-[1.2em] text-black border-solid border-2 border-black"
                                                 type="text" name="name" value="{{ $user->name }}">
                                             <button type="submit"
                                                 class="text-[1.2em] btn-update btn bg-[#803bff] rounded-xl text-white py-2 px-3 btn-danger">Update
@@ -65,6 +72,8 @@
             </div>
         </div>
     </div>
+
+
 
 <script>
     function update(userId) {

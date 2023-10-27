@@ -16,8 +16,7 @@ class ProfileController extends controller
 {
     $user = Auth::user();
     $user->name = $request->input('name');
-    $user->save();
-
+    
     return view('profile');
 }
 }

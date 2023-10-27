@@ -1,10 +1,8 @@
 @include('app')
 
-
-
-
+<div class="text-white">
 Welkom {{ Auth::user()->name }}
-
+</div>
 
 <form method="POST" action="{{ route('update.name') }}">
     @csrf

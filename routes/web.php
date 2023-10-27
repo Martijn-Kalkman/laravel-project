@@ -43,7 +43,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
     Route::get('/users', [DashboardController::class, 'userIndex'])->name('user.index')->middleware(['auth', 'isAdmin']);
     Route::delete('/users/{user}', [DashboardController::class, 'userDelete'])->name('userDelete')->middleware(['auth', 'isAdmin']);
-    Route::put('/users/{user}', [DashboardController::class, 'userUpdate'])->name('userUpdate')->middleware(['auth', 'isAdmin']);
+    Route::put('/users', [DashboardController::class, 'userUpdate'])->name('userUpdate')->middleware(['auth', 'isAdmin']);
 
+    Route::get('/animelist', [DashboardController::class, 'animeIndex'])->name('animeindex')->middleware(['auth', 'isAdmin']);
     Route::post('/admin-pannel', [DashboardController::class, 'animeCreate'])->name('animeCreate')->middleware(['auth', 'isAdmin']);
+    
+    Route::get('/animelist/{anime}', [DashboardController::class, 'animeDetail'])->name('animeDetail')->middleware(['auth', 'isAdmin']);
+
 

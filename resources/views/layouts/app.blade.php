@@ -16,8 +16,8 @@
     <!-- Scripts -->
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
 </head>
-<body>
-    <div class="container mx-auto text-center">
+<body class="bg-[#494997]">
+    <div class=" mx-auto text-center">
     <div id="app">
         {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
