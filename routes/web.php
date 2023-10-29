@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\AboutusController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AnimelistController;
+use App\Http\Controllers\CreateController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -19,35 +19,31 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-// Route::get('/about-us', [AboutusController::class, 'index']);
-
+Route::get('/', function () { return view('home'); });
 Route::get('/animelist', [AnimelistController::class, 'index']);
-
-Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
+Route::get('/animelist/search', [AnimelistController::class, 'index'])->name('animeSearch');
 Route::post('/update-name', [ProfileController::class, 'updateName'])->name('update.name');
-// Route::post('/update-password', [ProfileController::class, 'updatePassword'])->name('update.password');
-
-
-
-
-Auth::routes();
-
+Route::patch('/animelist/{anime}', [AnimelistController::class, 'update'])->name('anime.update');
+Route::patch('/animelist/{anime}', [AnimelistController::class, 'update'])->name('anime.update');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// voor users met een account
+Auth::routes();
+Route::group(['middleware' => ['auth']], function () {
+Route::get('/profile', [ProfileController::class, 'index']);
+Route::delete('/profile/{anime}', [AnimelistController::class, 'animeDelete'])->name('userAnimedelete');
+Route::post('/create', [CreateController::class, 'animeCreate'])->name('animelist.store');
+Route::get('/animelist/{anime}', [DashboardController::class, 'animeDetail'])->name('animeDetail');
+Route::get('/create', [CreateController::class, 'index'])->name('createIndex');
+});
 
-// Admin only
-    Route::get('/admin-pannel', [DashboardController::class, 'index'])->middleware(['auth', 'isAdmin']);
-
-    Route::get('/users', [DashboardController::class, 'userIndex'])->name('user.index')->middleware(['auth', 'isAdmin']);
-    Route::delete('/users/{user}', [DashboardController::class, 'userDelete'])->name('userDelete')->middleware(['auth', 'isAdmin']);
-    Route::put('/users', [DashboardController::class, 'userUpdate'])->name('userUpdate')->middleware(['auth', 'isAdmin']);
-
-    Route::get('/animelist', [DashboardController::class, 'animeIndex'])->name('animeindex')->middleware(['auth', 'isAdmin']);
-    Route::post('/admin-pannel', [DashboardController::class, 'animeCreate'])->name('animeCreate')->middleware(['auth', 'isAdmin']);
-    
-    Route::get('/animelist/{anime}', [DashboardController::class, 'animeDetail'])->name('animeDetail')->middleware(['auth', 'isAdmin']);
-
-
+// Voor admin
+Route::group(['middleware' => ['auth', 'isAdmin']], function () {
+    Route::get('/admin-pannel', [DashboardController::class, 'index']);
+    Route::get('/users', [DashboardController::class, 'userIndex'])->name('user.index');
+    Route::get('/anime', [DashboardController::class, 'animeIndex'])->name('animeIndex');
+    Route::delete('/animes/{anime}', [DashboardController::class, 'animeDelete'])->name('animeDelete');
+    Route::delete('/users/{user}', [DashboardController::class, 'userDelete'])->name('userDelete');
+    Route::put('/users', [DashboardController::class, 'userUpdate'])->name('userUpdate');
+    Route::post('/admin-pannel', [DashboardController::class, 'animeCreate'])->name('animeCreate');
+});

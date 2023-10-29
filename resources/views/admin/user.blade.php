@@ -45,7 +45,7 @@
                                     </td>
                                     <td>
                                         <button
-                                            class="btn-update btn bg-[#803bff] rounded-xl text-white py-2 px-3 btn-danger"
+                                            class="btn-update btn bg-[#803bff] rounded-xl text-white py-2 px-3"
                                             onclick="update({{ $user->id }})">Update</button>
                                     </td>
                                 </tr>

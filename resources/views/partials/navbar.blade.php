@@ -22,13 +22,13 @@
       <div class="hidden w-full md:block md:w-auto" id="navbar-default">
         <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0">
           <li>
-            <a href="{{ url('/about-us') }}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-sky-200 md:p-0 dark:text-white md:dark:hover:text-sky-200 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About us</a>
-          </li>
-          <li>
             <a href="{{ url('/animelist') }}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-sky-200 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Anime list</a>
           </li>
 
           @if (Auth::check() && Auth::user()->role == '0')
+          <li>
+            <a href="{{ url('/create') }}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-sky-200 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Create anime</a>
+          </li>
           <li>
             <a href="{{ url('/profile') }}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-sky-200 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Profile</a>
           </li>
@@ -64,7 +64,7 @@
     </div>
   </nav>
 
-@if (request()->is('users') || request()->is('admin-pannel'))
+@if (request()->is('users') || request()->is('admin-pannel') || request()->is('anime'))
 <div class="flex flex-row">
 <nav class="bg-[#383B42] w-2/12 h-screen mt-[-4em]">
   <ul class="mt-[4em]"> 
@@ -80,7 +80,9 @@
 
    </li>
   </a>
-      <li class="bg-[#bae5fd4d] hover:cursor-pointer text-white mb-1 rounded hover:bg-[#5998b9] border-b-1 border-black py-2 px-4">Test</li>
+  <a href="{{ url('/anime') }}">
+      <li class="bg-[#bae5fd4d] hover:cursor-pointer text-white mb-1 rounded hover:bg-[#5998b9] border-b-1 border-black py-2 px-4">Animes</li>
+  </a>
   </ul>
   <div class="bottom-0 absolute text-white border-t-2 w-2/12 border-white ">
       <p class="mx-2 text-center my-5">Welkom {{ Auth::user()->name }}
