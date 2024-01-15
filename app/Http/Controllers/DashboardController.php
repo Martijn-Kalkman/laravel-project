@@ -39,14 +39,17 @@ class DashboardController extends controller
         $user->delete();
         return redirect()->route('user.index')->with('success', 'Account ' . $name . ' is succesvol Verwijderd uit het systeem');
     }
-    public function userUpdate(Request $request, User $user)
+    public function userUpdate(Request $request, $userId)
     {
+        $user = User::find($userId);
+    
         $user->update([
             'name' => $request->input('name'),
         ]);
-
+    
         return redirect()->route('user.index')->with('success', 'User ' . $user->name . ' updated successfully');
     }
+    
 
     public function animeCreate(Request $request, User $user)
     {

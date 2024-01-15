@@ -20,7 +20,7 @@
                         <th>Name</th>
                         <th>Description</th>
                         <th>Image</th>
-                        <th>Actions</th>
+                        <th>Status</th>
                     </thead>
 
                     <tbody>
@@ -38,14 +38,26 @@
                                 <td>
                                     <img class="w-12  rounded" src="{{ asset($anime->image) }}" alt="{{ $anime->name }}">
                                 </td>
-                                <td class="px-6 py-4">
-                                    <form action="{{ route('animeDelete', $anime->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                            class="bg-[#DC3545] rounded-xl text-white py-2 px-3 btn-danger">Delete</button>
-                                    </form>
+                                <td>
+                                    <?php if($anime->status == '1') {?>
+                                        <form action="{{ route('animeToggle', $anime->id) }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="status" value="2">
+                                            <button class="bg-blue-600 rounded-xl px-4 py-2 mt-2 mb-2" type="submit">ON</button>
+                                        </form>
+                                    <?php } else { ?>
+                                        <form action="{{ route('animeToggle', $anime->id) }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="status" value="1">
+                                            <button class="bg-blue-600 rounded-xl px-4 py-2 mt-2 mb-2" type="submit">OF</button>
+                                        </form>
+                                    <?php } ?>
                                 </td>
+                                    
+                                    
+                                </td>
+
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

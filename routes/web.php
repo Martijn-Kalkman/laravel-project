@@ -35,6 +35,8 @@ Route::delete('/profile/{anime}', [AnimelistController::class, 'animeDelete'])->
 Route::post('/create', [CreateController::class, 'animeCreate'])->name('animelist.store');
 Route::get('/animelist/{anime}', [DashboardController::class, 'animeDetail'])->name('animeDetail');
 Route::get('/create', [CreateController::class, 'index'])->name('createIndex');
+Route::post('/animelist/{anime}/toggle', [AnimelistController::class, 'toggleStatus'])->name('animeToggle');
+
 });
 
 // Voor admin
@@ -44,6 +46,6 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/anime', [DashboardController::class, 'animeIndex'])->name('animeIndex');
     Route::delete('/animes/{anime}', [DashboardController::class, 'animeDelete'])->name('animeDelete');
     Route::delete('/users/{user}', [DashboardController::class, 'userDelete'])->name('userDelete');
-    Route::put('/users', [DashboardController::class, 'userUpdate'])->name('userUpdate');
+    Route::put('/users/{user}', [DashboardController::class, 'userUpdate'])->name('userUpdate');
     Route::post('/admin-pannel', [DashboardController::class, 'animeCreate'])->name('animeCreate');
 });

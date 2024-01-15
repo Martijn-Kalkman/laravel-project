@@ -11,7 +11,7 @@ class AnimelistController extends Controller
     public function index()
     {
         return view('animelist', [
-            'animes' => Anime::latest()->filter(request('search'))->get()
+            'animes' => Anime::latest()->filter(request('search'))->where('status', 1)->get()
         ]);
     }
 
@@ -51,4 +51,23 @@ class AnimelistController extends Controller
         $anime->delete();
         return redirect()->route('animeIndex')->with('success', 'Account ' . $name . ' is succesvol Verwijderd uit het systeem');
     }
+
+
+    public function toggleStatus($id)
+    {
+        $anime = Anime::find($id);
+    
+        if ($anime) {
+            $status = $anime->status == 1 ? 0 : 1;
+    
+            $values = ['status' => $status];
+            Anime::where('id', $id)->update($values);
+    
+            return redirect('/anime')->with('success', 'Anime status toggled successfully.');
+        } else {
+            return redirect('/animeIndex')->with('error', 'Anime not found.');
+        }
+    }
+    
+
 }
