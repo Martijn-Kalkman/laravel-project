@@ -19,4 +19,10 @@ class Anime extends Model
             $query->where('name', 'like', '%' . $search . '%');
         }
     }
+
+    public function user()
+{
+    return $this->belongsTo(User::class, 'user_id');
+}
+
 }

@@ -21,9 +21,13 @@
                 </div>
                 <div class="relative">
                     <label for="category" class="sr-only">Select Category</label>
+                    
                     <select name="category" id="category" class="block w-40 p-4 text-sm text-black rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-black dark:placeholder-black dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option value="">All Categories</option>
+                        
                         <option value="action" {{ request('category') === 'action' ? 'selected' : '' }}>Action</option>
+                        <option value="horror" {{ request('category') === 'horror' ? 'selected' : '' }}>Horror</option>
+    
                         <!-- Add more options for different categories -->
                     </select>
                 </div>

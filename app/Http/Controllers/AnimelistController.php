@@ -10,8 +10,20 @@ class AnimelistController extends Controller
 {
     public function index()
     {
+        $query = Anime::latest()->where('status', 1);
+
+        if ($search = request('search')) {
+            $query->filter($search);
+        }
+    
+        if ($category = request('category')) {
+            $query->where('category', $category);
+        }
+    
+        $animes = $query->get();
+    
         return view('animelist', [
-            'animes' => Anime::latest()->filter(request('search'))->where('status', 1)->get()
+            'animes' => $animes,
         ]);
     }
 
@@ -42,7 +54,7 @@ class AnimelistController extends Controller
             $anime->save();
         }
     
-        return redirect()->back()->with('success', 'Anime updated successfully');
+        return redirect('/profile')->with('success', 'Anime status toggled successfully.');
     }
 
     public function animeDelete(Anime $anime)

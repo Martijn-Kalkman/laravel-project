@@ -32,6 +32,8 @@ class CreateController extends controller
             $anime->description = $request->description;
             $anime->user_id = $request->user_id;
             $anime->image = 'images/' . $imageName;
+            $anime->category = implode(',', $request->categories);
+
 
             
     
