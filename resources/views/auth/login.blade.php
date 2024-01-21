@@ -5,6 +5,7 @@
 <div class="flex items-center mt-[200px] justify-center">
     <div class="bg-[#383B42] p-8 rounded-xl shadow-xl w-96">
         <h2 class="text-2xl text-white font-semibold mb-6">{{ __('Login to Alist') }}</h2>
+        
         <form method="POST" action="{{ route('login') }}">
             @csrf
 

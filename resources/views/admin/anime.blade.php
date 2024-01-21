@@ -21,6 +21,7 @@
                         <th>Description</th>
                         <th>Image</th>
                         <th>Status</th>
+                        <th>Actions</th>
                     </thead>
 
                     <tbody>
@@ -56,8 +57,13 @@
                                     </form>
                                     <?php } ?>
                                 </td>
-
-
+                                <td class="px-6 py-4">
+                                    <form action="{{ route('animeDelete', $anime->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="bg-[#DC3545] rounded-xl text-white py-2 px-3 btn-danger">Delete</button>
+                                    </form>
                                 </td>
 
                             </tr>
