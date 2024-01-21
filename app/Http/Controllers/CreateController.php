@@ -20,13 +20,13 @@ class CreateController extends controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'description' => 'required',
         ]);
-    
+
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->extension();
-            
+
             $request->image->storeAs('images', $imageName);
             $request->image->move(public_path('images'), $imageName);
-    
+
             $anime = new Anime;
             $anime->name = $request->name;
             $anime->description = $request->description;
@@ -34,11 +34,8 @@ class CreateController extends controller
             $anime->image = 'images/' . $imageName;
             $anime->category = implode(',', $request->categories);
 
-
-            
-    
             $anime->save();
-    
+
             return redirect('/animelist')->with('success', 'Anime toegevoegd');
         }
     }

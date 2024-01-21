@@ -42,14 +42,14 @@ class DashboardController extends controller
     public function userUpdate(Request $request, $userId)
     {
         $user = User::find($userId);
-    
+
         $user->update([
             'name' => $request->input('name'),
         ]);
-    
+
         return redirect()->route('user.index')->with('success', 'User ' . $user->name . ' updated successfully');
     }
-    
+
 
     public function animeCreate(Request $request, User $user)
     {
@@ -70,12 +70,12 @@ class DashboardController extends controller
             $anime->description = $request->description;
             $anime->user_id = $request->user_id;
             $anime->image = 'images/' . $imageName;
-            $anime->category = implode(',', $request->categories);
+            $anime->category = implode(', ', $request->categories);
 
 
             $anime->save();
 
-            return redirect('/admin-pannel')->with('success', 'Anime added successfully');
+            return redirect('/animelist')->with('success', 'Anime added successfully');
         }
     }
 
@@ -83,5 +83,4 @@ class DashboardController extends controller
     {
         return view('detail', compact('anime'));
     }
-
 }

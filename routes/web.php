@@ -22,7 +22,6 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () { return view('home'); });
 Route::get('/animelist', [AnimelistController::class, 'index']);
 Route::get('/animelist/search', [AnimelistController::class, 'index'])->name('animeSearch');
-Route::post('/update-name', [ProfileController::class, 'updateName'])->name('update.name');
 Route::patch('/animelist/{anime}', [AnimelistController::class, 'update'])->name('anime.update');
 Route::patch('/animelist/{anime}', [AnimelistController::class, 'update'])->name('anime.update');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -35,8 +34,7 @@ Route::delete('/profile/{anime}', [AnimelistController::class, 'animeDelete'])->
 Route::post('/create', [CreateController::class, 'animeCreate'])->name('animelist.store');
 Route::get('/animelist/{anime}', [DashboardController::class, 'animeDetail'])->name('animeDetail');
 Route::get('/create', [CreateController::class, 'index'])->name('createIndex');
-Route::post('/animelist/{anime}/toggle', [AnimelistController::class, 'toggleStatus'])->name('animeToggle');
-
+Route::post('/update-name', [ProfileController::class, 'updateName'])->name('update.name');
 });
 
 // Voor admin
@@ -48,4 +46,5 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::delete('/users/{user}', [DashboardController::class, 'userDelete'])->name('userDelete');
     Route::put('/users/{user}', [DashboardController::class, 'userUpdate'])->name('userUpdate');
     Route::post('/admin-pannel', [DashboardController::class, 'animeCreate'])->name('animeCreate');
+    Route::post('/animelist/{anime}/toggle', [AnimelistController::class, 'toggleStatus'])->name('animeToggle');
 });

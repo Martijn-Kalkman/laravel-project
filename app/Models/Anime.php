@@ -12,13 +12,17 @@ class Anime extends Model
         'description',
         'image',
     ];
+    
 
     public function scopeFilter($query, $search)
     {
         if ($search) {
             $query->where('name', 'like', '%' . $search . '%');
+            
         }
     }
+
+ 
 
     public function user()
 {

@@ -17,37 +17,50 @@
         <form action="{{ route('animeSearch') }}" method="GET">
             <div class="flex mb-8">
                 <div class="relative mr-4">
-                    <input type="search" name="search" id="default-search" value="{{ request('search') }}" class="block w-500 p-4 pl-10 text-sm text-black rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-black dark:placeholder-black dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for anime..." >
+                    <input type="search" name="search" id="default-search" value="{{ request('search') }}"
+                        class="block w-500 p-4 pl-10 text-sm text-black rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-black dark:placeholder-black dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Zoek naar een anime">
                 </div>
                 <div class="relative">
                     <label for="category" class="sr-only">Select Category</label>
-                    
-                    <select name="category" id="category" class="block w-40 p-4 text-sm text-black rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-black dark:placeholder-black dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option value="">All Categories</option>
-                        
-                        <option value="action" {{ request('category') === 'action' ? 'selected' : '' }}>Action</option>
-                        <option value="horror" {{ request('category') === 'horror' ? 'selected' : '' }}>Horror</option>
-    
-                        <!-- Add more options for different categories -->
+
+                    <select name="category" id="category"
+                        class="block w-40 p-4 text-sm text-black rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-black dark:placeholder-black dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option value="">alle genres</option>
+
+                        <option value="action"
+                            {{ in_array('action', explode(',', request('category'))) ? 'selected' : '' }}>Action
+                        </option>
+                        <option value="horror"
+                            {{ in_array('horror', explode(',', request('category'))) ? 'selected' : '' }}>Horror
+                        </option>
+                        <option value="adventure"
+                            {{ in_array('adventure', explode(',', request('category'))) ? 'selected' : '' }}>Adventure
+                        </option>
+                        <option value="drama"
+                            {{ in_array('drama', explode(',', request('category'))) ? 'selected' : '' }}>Drama
+                        </option>
                     </select>
                 </div>
-                <button type="submit" class="text-white bg-slate-600 hover:bg-blue-500 font-medium rounded-lg text-sm px-4 py-2">Search</button>
+                <button type="submit"
+                    class="text-white ml-4 bg-slate-600 hover:bg-blue-500 font-medium rounded-lg text-sm px-4 py-2">Zoeken</button>
             </div>
         </form>
 
         <div class="flex flex-wrap -mx-4">
             @foreach ($animes as $anime)
-                @if($anime->status) <!-- Only display if status is 'On' -->
-                    <div class="w-1/4 px-4 mb-4">
-                        <div class="rounded border-2 border-solid border-white">
-                            <h2 class="text-lg text-center font-bold border-b-2 border-white mb-2">{{ $anime->name }}</h2>
-                            <img src="{{ asset($anime->image) }}" alt="{{ $anime->name }}">
-                            <a href="{{ route('animeDetail', ['anime' => $anime->id]) }}" class="block text-center hover:bg-slate-600 bg-black p-4 rounded shadow hover:shadow-lg transition duration-300">
-                                Click for more information
-                            </a>
-                        </div>
+                <div class="w-1/4 px-4 mb-4">
+                    <div class="rounded border-2 border-solid border-white">
+                        <h2 class="text-lg text-center font-bold border-b-2 border-white mb-2">{{ $anime->name }}
+                        </h2>
+                        <div class="text-center  mb-2">{{ $anime->category }}</div>
+                        <img src="{{ asset($anime->image) }}" alt="{{ $anime->name }}">
+                        <a href="{{ route('animeDetail', ['anime' => $anime->id]) }}"
+                            class="block text-center hover:bg-slate-600 bg-black p-4 rounded shadow hover:shadow-lg transition duration-300">
+                            Klik hier voor meer informatie
+                        </a>
                     </div>
-                @endif
+                </div>
             @endforeach
         </div>
     </div>

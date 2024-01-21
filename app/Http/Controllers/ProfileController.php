@@ -13,10 +13,11 @@ class ProfileController extends controller
     }
 
     public function updateName(Request $request)
-{
-    $user = Auth::user();
-    $user->name = $request->input('name');
-    
-    return view('profile');
-}
+    {
+        $user = Auth::user();
+        $user->name = $request->input('name');
+        $user->save();
+
+        return view('profile');
+    }
 }

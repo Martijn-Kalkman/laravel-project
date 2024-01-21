@@ -36,25 +36,28 @@
                                     {{ $anime->description }}
                                 </td>
                                 <td>
-                                    <img class="w-12  rounded" src="{{ asset($anime->image) }}" alt="{{ $anime->name }}">
+                                    <img class="w-12  rounded" src="{{ asset($anime->image) }}"
+                                        alt="{{ $anime->name }}">
                                 </td>
                                 <td>
                                     <?php if($anime->status == '1') {?>
-                                        <form action="{{ route('animeToggle', $anime->id) }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="status" value="2">
-                                            <button class="bg-blue-600 rounded-xl px-4 py-2 mt-2 mb-2" type="submit">ON</button>
-                                        </form>
+                                    <form action="{{ route('animeToggle', $anime->id) }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="status" value="2">
+                                        <button class="bg-blue-600 rounded-xl px-4 py-2 mt-2 mb-2"
+                                            type="submit">Aan</button>
+                                    </form>
                                     <?php } else { ?>
-                                        <form action="{{ route('animeToggle', $anime->id) }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="status" value="1">
-                                            <button class="bg-blue-600 rounded-xl px-4 py-2 mt-2 mb-2" type="submit">OF</button>
-                                        </form>
+                                    <form action="{{ route('animeToggle', $anime->id) }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="status" value="1">
+                                        <button class="bg-blue-600 rounded-xl px-4 py-2 mt-2 mb-2"
+                                            type="submit">Uit</button>
+                                    </form>
                                     <?php } ?>
                                 </td>
-                                    
-                                    
+
+
                                 </td>
 
                             </tr>
