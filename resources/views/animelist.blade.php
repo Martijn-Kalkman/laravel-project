@@ -15,6 +15,7 @@
         <h1 class="text-2xl font-semibold mb-4">Animelist</h1>
 
         <form action="{{ route('animeSearch') }}" method="GET">
+            @csrf
             <div class="flex mb-8">
                 <div class="relative mr-4">
                     <input type="search" name="search" id="default-search" value="{{ request('search') }}"

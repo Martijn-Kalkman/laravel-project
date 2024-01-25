@@ -18,7 +18,7 @@
             @csrf
 
             <div class="form-group">
-                <input id="name" class="bg-gray-200 p-2 rounded" type="text" name="name">
+                <input id="name" class="bg-gray-200 text-black p-2 rounded" type="text" name="name">
             </div>
 
             <button type="submit" class="bg-blue-500 ml-2 text-white px-4 py-2 rounded">
@@ -33,37 +33,39 @@
     <ul class="w-[500px] mx-auto">
         @foreach (Auth::user()->animes as $anime)
             <li class="mb-8">
-                <form method="POST" action="{{ route('anime.update', ['anime' => $anime->id]) }}"
-                    enctype="multipart/form-data">
-                    @csrf
-                    @method('PATCH')
-                    <p class="font-bold text-center text-2xl mb-4">Update anime: {{ $anime->name }}</p>
+                @if (Auth::id() === $anime->user_id)
+                    <form method="POST" action="{{ route('anime.update', ['anime' => $anime->id]) }}"
+                        enctype="multipart/form-data">
+                        @csrf
+                        @method('PATCH')
+                        <p class="font-bold text-center text-2xl mb-4">Update anime: {{ $anime->name }}</p>
 
-                    <div class="flex flex-col w-full mx-auto space-y-4">
-                        <label for="name">Name:</label>
-                        <input class="text-black p-2 border rounded" type="text" name="name"
-                            value="{{ $anime->name }}" id="name">
+                        <div class="flex flex-col w-full mx-auto space-y-4">
+                            <label for="name">Name:</label>
+                            <input class="text-black p-2 border rounded" type="text" name="name"
+                                value="{{ $anime->name }}" id="name">
 
-                        <label for="description">Description:</label>
-                        <textarea class="text-black p-2 border rounded" name="description" id="description">{{ $anime->description }}</textarea>
+                            <label for="description">Description:</label>
+                            <textarea class="text-black p-2 border rounded" name="description" id="description">{{ $anime->description }}</textarea>
 
-                        <label for="image">Image:</label>
-                        <input type="file" name="image" id="image" class="mb-2">
+                            <label for="image">Image:</label>
+                            <input type="file" name="image" id="image" class="mb-2">
 
-                        <button class="bg-slate-600  mx-auto hover:bg-blue-500 text-white rounded-lg px-4 py-2"
-                            type="submit">Update Anime</button>
-                    </div>
-                </form>
+                            <button class="bg-slate-600 mx-auto hover:bg-blue-500 text-white rounded-lg px-4 py-2"
+                                type="submit">Update Anime</button>
+                        </div>
+                    </form>
 
-                <form action="{{ route('userAnimedelete', $anime->id) }}" method="POST" class="text-center">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="bg-[#DC3545] w-auto rounded-lg text-white py-2 px-3 mt-4 mx-auto">
-                        Delete
-                    </button>
-                </form>
-
+                    <form action="{{ route('userAnimedelete', $anime->id) }}" method="POST" class="text-center">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="bg-[#DC3545] w-auto rounded-lg text-white py-2 px-3 mt-4 mx-auto">
+                            Delete
+                        </button>
+                    </form>
+                @endif
             </li>
         @endforeach
     </ul>
+
 </div>
