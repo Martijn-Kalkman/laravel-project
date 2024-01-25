@@ -47,11 +47,11 @@ class DashboardController extends controller
             'name' => $request->input('name'),
         ]);
 
-        return redirect()->route('user.index')->with('success', 'User ' . $user->name . ' updated successfully');
+        return redirect()->route('user.index')->with('success', 'User ' . $user->name . ' updated');
     }
 
 
-    public function animeCreate(Request $request, User $user)
+    public function animeCreate(Request $request)
     {
         $request->validate([
             'name' => 'required',
@@ -75,7 +75,7 @@ class DashboardController extends controller
 
             $anime->save();
 
-            return redirect('/animelist')->with('success', 'Anime added successfully');
+            return redirect('/animelist')->with('success', 'Anime toegevoegd');
         }
     }
 

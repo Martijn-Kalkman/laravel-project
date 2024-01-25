@@ -12,7 +12,6 @@ class AnimelistController extends Controller
     {
         $query = Anime::latest()->where('status', 1);
         
-        // Voeg de volgende controle toe om te controleren of de gebruiker minimaal 10 seconden is ingelogd
         $loginTime = now()->timestamp;
         $sessionLoginTime = session('login_time', 0);
         
@@ -38,7 +37,7 @@ class AnimelistController extends Controller
     public function update(Request $request, Anime $anime)
     {
         if ($anime->user_id !== auth()->user()->id) {
-            return redirect()->back()->with('error', 'You are not authorized to update this anime.');
+            return redirect()->back()->with('error', 'je hebt geen permissie om deze anime te updaten.');
         }
 
         $request->validate([

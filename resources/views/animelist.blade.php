@@ -27,7 +27,7 @@
 
                     <select name="category" id="category"
                         class="block w-40 p-4 text-sm text-black rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-black dark:placeholder-black dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option value="">alle genres</option>
+                        <option value="">categorie</option>
 
                         <option value="action"
                             {{ in_array('action', explode(',', request('category'))) ? 'selected' : '' }}>Action
